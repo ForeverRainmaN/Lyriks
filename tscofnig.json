@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+      "lib": [
+        "ESNext",
+        "dom"
+      ], 
+    "outDir": "lib", 
+    "removeComments": true, 
+    "target": "ES6",
+    "jsx": "react",
+    "module": "ESNext",
+    "moduleResolution": "node",
+  
+    "baseUrl": "./",
+    "esModuleInterop": true, 
+    "paths": {}, 
+
+    "allowJs": true,
+     
+    "sourceMap": true, 
+    "sourceRoot": "/", 
+     
+    "alwaysStrict": true, 
+    "allowUnreachableCode": false,
+    "noImplicitAny": true, 
+    "strictNullChecks": true, 
+  
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true, 
+    "noUnusedParameters": true,
+    "include": ["./**/*.ts", "scr/optional.d.ts"],
+    "exclude": [
+      "node_modules/**/*",
+      "build"
+    ]
+  }
+}

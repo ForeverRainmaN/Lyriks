@@ -1,5 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+type PlayerState = {
+  currentSongs: any[],
+  currentIndex: number,
+  isActive: boolean,
+  isPlaying: boolean,
+  activeSong: any,
+  genreListId: string
+}
+
 const initialState = {
   currentSongs: [],
   currentIndex: 0,
@@ -7,7 +16,8 @@ const initialState = {
   isPlaying: false,
   activeSong: {},
   genreListId: '',
-};
+} as PlayerState
+
 
 const playerSlice = createSlice({
   name: 'player',
