@@ -11,10 +11,12 @@ import {
   TopArtists,
   TopCharts,
 } from "./pages";
-import { useAppSelector } from "./redux/store";
+import { store, useAppSelector } from "./redux/store";
 
 const App = () => {
-  const { activeSong } = useAppSelector((state) => state.player.activeSong);
+  const { activeSong } = useAppSelector((state) => state.player);
+
+  console.log(store.getState().player.activeSong);
 
   return (
     <div className="relative flex">

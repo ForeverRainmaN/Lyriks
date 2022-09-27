@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
 
 interface PlayPayseProps {
   isPlaying: boolean;
@@ -9,11 +10,16 @@ interface PlayPayseProps {
 }
 
 const PlayPause: FC<PlayPayseProps> = ({
-  handlePause,
   isPlaying,
-  handlePlay,
-  song,
   activeSong,
-}) => <div>Loader</div>;
+  song,
+  handlePause,
+  handlePlay,
+}) =>
+  isPlaying && activeSong?.title === song.title ? (
+    <FaPauseCircle size={35} className="text-gray-300" onClick={handlePause} />
+  ) : (
+    <FaPlayCircle size={35} className="text-gray-300" onClick={handlePlay} />
+  );
 
 export default PlayPause;
