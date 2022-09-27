@@ -1,29 +1,34 @@
-/* eslint-disable jsx-a11y/media-has-caption */
-/* <ts-nocheck */
-
-import React, { useRef, useEffect, FC } from 'react';
+import React, { FC, useEffect, useRef } from "react";
 
 interface PlayerProps {
-  activeSong: any
-  isPlaying: any
-  isActive?: boolean
-  currentIndex: any
-  volume: any
-  seekTime: any
-  onEnded: any
-  onTimeUpdate: any
-  onLoadedData: any
-  repeat: any
+  activeSong: any;
+  isPlaying: any;
+  isActive?: boolean;
+  currentIndex: any;
+  volume: any;
+  seekTime: any;
+  onEnded: any;
+  onTimeUpdate: any;
+  onLoadedData: any;
+  repeat: any;
 }
 
-const Player: FC<PlayerProps> = ({ activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate, onLoadedData, repeat }) => {
+const Player: FC<PlayerProps> = ({
+  activeSong,
+  isPlaying,
+  volume,
+  seekTime,
+  onEnded,
+  onTimeUpdate,
+  onLoadedData,
+  repeat,
+}) => {
   const ref: any = useRef(null);
-  // eslint-disable-next-line no-unused-expressions
   if (ref.current) {
     if (isPlaying) {
-      ref.current!.play();
+      ref.current.play();
     } else {
-      ref.current!.pause();
+      ref.current.pause();
     }
   }
 

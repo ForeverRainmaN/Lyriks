@@ -1,7 +1,5 @@
-import React from 'react';
+import React from "react";
 
-const DetailsHeader = () => (
-  <div>DetailsHeader</div>
-);
+const DetailsHeader = () => <div>DetailsHeader</div>;
 
 export default DetailsHeader;

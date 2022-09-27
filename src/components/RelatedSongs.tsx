@@ -1,7 +1,5 @@
-import React from 'react';
+import React from "react";
 
-const RelatedSongs = () => (
-  <div>Loader</div>
-);
+const RelatedSongs = () => <div>Loader</div>;
 
 export default RelatedSongs;

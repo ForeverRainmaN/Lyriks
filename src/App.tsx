@@ -1,12 +1,20 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 
-import { MusicPlayer, Searchbar, Sidebar, TopPlay } from './components';
-import { AroundYou, ArtistDetails, Discover, Search, SongDetails, TopArtists, TopCharts } from './pages';
-import { useAppSelector } from './redux/store';
+import { MusicPlayer, Searchbar, Sidebar, TopPlay } from "./components";
+import {
+  AroundYou,
+  ArtistDetails,
+  Discover,
+  Search,
+  SongDetails,
+  TopArtists,
+  TopCharts,
+} from "./pages";
+import { useAppSelector } from "./redux/store";
 
 const App = () => {
-  const { activeSong } = useAppSelector(state => state.player.activeSong)
+  const { activeSong } = useAppSelector((state) => state.player.activeSong);
 
   return (
     <div className="relative flex">
