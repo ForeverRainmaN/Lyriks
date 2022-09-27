@@ -1,10 +1,10 @@
-import Discover from './Discover';
-import TopArtists from './TopArtists';
-import ArtistDetails from './ArtistDetails';
-import SongDetails from './SongDetails';
-import Search from './Search';
-import TopCharts from './TopCharts';
-import AroundYou from './AroundYou';
+import AroundYou from "./AroundYou";
+import ArtistDetails from "./ArtistDetails";
+import Discover from "./Discover";
+import Search from "./Search";
+import SongDetails from "./SongDetails";
+import TopArtists from "./TopArtists";
+import TopCharts from "./TopCharts";
 
 export {
   Discover,

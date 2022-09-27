@@ -1,13 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 type PlayerState = {
-  currentSongs: any[],
-  currentIndex: number,
-  isActive: boolean,
-  isPlaying: boolean,
-  activeSong: any,
-  genreListId: string
-}
+  currentSongs: any[];
+  currentIndex: number;
+  isActive: boolean;
+  isPlaying: boolean;
+  activeSong: any;
+  genreListId: string;
+};
 
 const initialState = {
   currentSongs: [],
@@ -15,12 +15,11 @@ const initialState = {
   isActive: false,
   isPlaying: false,
   activeSong: {},
-  genreListId: '',
-} as PlayerState
-
+  genreListId: "",
+} as PlayerState;
 
 const playerSlice = createSlice({
-  name: 'player',
+  name: "player",
   initialState,
   reducers: {
     setActiveSong: (state, action) => {
@@ -70,6 +69,12 @@ const playerSlice = createSlice({
   },
 });
 
-export const { setActiveSong, nextSong, prevSong, playPause, selectGenreListId } = playerSlice.actions;
+export const {
+  setActiveSong,
+  nextSong,
+  prevSong,
+  playPause,
+  selectGenreListId,
+} = playerSlice.actions;
 
 export default playerSlice.reducer;

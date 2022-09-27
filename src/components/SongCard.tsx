@@ -1,7 +1,5 @@
-import React from 'react';
+import React from "react";
 
-const SongCard = () => (
-  <div>SongCard</div>
-);
+const SongCard = () => <div>SongCard</div>;
 
 export default SongCard;
