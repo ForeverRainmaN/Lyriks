@@ -8,16 +8,16 @@ import {
 import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
 
 interface ControlsProps {
-  isPlaying: any;
+  isPlaying: boolean;
   repeat: any;
-  isActive?: any;
+  isActive?: boolean;
   setRepeat: any;
   shuffle: any;
   setShuffle: any;
   currentSongs: any;
-  handlePlayPause: any;
-  handlePrevSong: any;
-  handleNextSong: any;
+  handlePlayPause: () => void;
+  handlePrevSong: () => void;
+  handleNextSong: () => void;
 }
 
 const Controls: FC<ControlsProps> = ({
