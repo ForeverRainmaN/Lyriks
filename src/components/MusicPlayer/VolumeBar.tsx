@@ -6,14 +6,14 @@ import {
 } from "react-icons/bs";
 
 interface VolumeBarProps {
-  value: any;
-  min: any;
-  max: any;
-  onChange: any;
-  setVolume: any;
+  value: number;
+  min: number;
+  max: number;
+  setVolume: (number) => void;
+  onChange: () => void;
 }
 
-const VolumeBar: FC<VolumeBarProps> = ({
+export const VolumeBar: FC<VolumeBarProps> = ({
   value,
   min,
   max,
@@ -41,9 +41,7 @@ const VolumeBar: FC<VolumeBarProps> = ({
       min={min}
       max={max}
       onChange={onChange}
-      className="2xl:w-40 lg:w-32 md:w-32 h-1 ml-2"
+      className="2xl:w-40 lg:w-32 md:w-32 h-1 ml-2 bg-pink-900"
     />
   </div>
 );
-
-export default VolumeBar;

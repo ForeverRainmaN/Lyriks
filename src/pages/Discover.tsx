@@ -4,6 +4,7 @@ import { Error, Loader, SongCard } from "../components";
 import { useAppDispatch, useAppSelector } from "../redux/store";
 
 import { useGetTopChartsQuery } from "../redux/services/shazamCore";
+import { VolumeBar } from "../components/MusicPlayer/VolumeBar";
 
 const Discover = () => {
   const dispatch = useAppDispatch();

@@ -1,81 +1,31 @@
-import React, { FC } from "react";
+import React from "react";
 import {
   BsArrowRepeat,
-  BsFillPauseFill,
-  BsFillPlayFill,
-  BsShuffle,
-} from "react-icons/bs";
-import { MdSkipNext, MdSkipPrevious } from "react-icons/md";
+  FaPauseCircle,
+  IoShuffleOutline,
+  MdSkipNext,
+  MdSkipPrevious,
+} from "react-icons/all";
 
 interface ControlsProps {
-  isPlaying: boolean;
-  repeat: any;
-  isActive?: boolean;
-  setRepeat: any;
-  shuffle: any;
-  setShuffle: any;
-  currentSongs: any;
-  handlePlayPause: () => void;
-  handlePrevSong: () => void;
-  handleNextSong: () => void;
+  repeat: () => void;
+  play: () => void;
+  pause: () => void;
+  shuffle: () => void;
+  previous: () => void;
+  next: () => void;
 }
 
-const Controls: FC<ControlsProps> = ({
-  isPlaying,
-  repeat,
-  setRepeat,
-  shuffle,
-  setShuffle,
-  currentSongs,
-  handlePlayPause,
-  handlePrevSong,
-  handleNextSong,
-}) => (
-  <div className="flex items-center justify-around md:w-36 lg:w-52 2xl:w-80">
-    <BsArrowRepeat
-      size={20}
-      color={repeat ? "red" : "white"}
-      onClick={() => setRepeat((prev) => !prev)}
-      className="hidden sm:block cursor-pointer"
-    />
-    {currentSongs?.length && (
-      <MdSkipPrevious
-        size={30}
-        color="#FFF"
-        className="cursor-pointer"
-        onClick={handlePrevSong}
-      />
-    )}
-    {isPlaying ? (
-      <BsFillPauseFill
-        size={45}
-        color="#FFF"
-        onClick={handlePlayPause}
-        className="cursor-pointer"
-      />
-    ) : (
-      <BsFillPlayFill
-        size={45}
-        color="#FFF"
-        onClick={handlePlayPause}
-        className="cursor-pointer"
-      />
-    )}
-    {currentSongs?.length && (
-      <MdSkipNext
-        size={30}
-        color="#FFF"
-        className="cursor-pointer"
-        onClick={handleNextSong}
-      />
-    )}
-    <BsShuffle
-      size={20}
-      color={shuffle ? "red" : "white"}
-      onClick={() => setShuffle((prev) => !prev)}
-      className="hidden sm:block cursor-pointer"
-    />
-  </div>
-);
-
-export default Controls;
+export const Controls = () => {
+  return (
+    <div className="flex justify-center">
+      <div className="flex w-60 justify-between items-baseline">
+        <BsArrowRepeat size={20} className="text-white" />
+        <MdSkipPrevious size={20} className="text-white" />
+        <FaPauseCircle size={30} className="text-white" />
+        <MdSkipNext size={20} className="text-white" />
+        <IoShuffleOutline size={20} className="text-white" />
+      </div>
+    </div>
+  );
+};

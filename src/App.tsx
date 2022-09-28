@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { MusicPlayer, Searchbar, Sidebar, TopPlay } from "./components";
+import { Searchbar, Sidebar, TopPlay, Player } from "./components";
 import {
   AroundYou,
   ArtistDetails,
@@ -15,8 +15,6 @@ import { store, useAppSelector } from "./redux/store";
 
 const App = () => {
   const { activeSong } = useAppSelector((state) => state.player);
-
-  console.log(store.getState().player.activeSong);
 
   return (
     <div className="relative flex">
@@ -44,7 +42,7 @@ const App = () => {
 
       {activeSong?.title && (
         <div className="absolute h-28 bottom-0 left-0 right-0 flex animate-slideup bg-gradient-to-br from-white/10 to-[#2a2a80] backdrop-blur-lg rounded-t-3xl z-10">
-          <MusicPlayer />
+          <Player />
         </div>
       )}
     </div>
