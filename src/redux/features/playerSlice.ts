@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Song } from "../services/types";
 
 type PlayerState = {
   currentSongs: any[];
   currentIndex: number;
   isActive: boolean;
-  isPlaying: boolean;
-  activeSong: any;
+  activeSong?: Song;
   genreListId: string;
 };
 
@@ -13,8 +13,6 @@ const initialState = {
   currentSongs: [],
   currentIndex: 0,
   isActive: false,
-  isPlaying: false,
-  activeSong: {},
   genreListId: "",
 } as PlayerState;
 
@@ -57,22 +55,13 @@ const playerSlice = createSlice({
       state.isActive = true;
     },
 
-    playPause: (state: PlayerState, action) => {
-      state.isPlaying = action.payload;
-    },
-
     selectGenreListId: (state, action) => {
       state.genreListId = action.payload;
     },
   },
 });
 
-export const {
-  setActiveSong,
-  nextSong,
-  prevSong,
-  playPause,
-  selectGenreListId,
-} = playerSlice.actions;
+export const { setActiveSong, nextSong, prevSong, selectGenreListId } =
+  playerSlice.actions;
 
 export default playerSlice.reducer;

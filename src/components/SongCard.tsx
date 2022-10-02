@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Link } from "react-router-dom";
-import { playPause, setActiveSong } from "../redux/features/playerSlice";
+import { setActiveSong } from "../redux/features/playerSlice";
 import { Song } from "../redux/services/types";
 import { useAppDispatch } from "../redux/store";
 import PlayPause from "./PlayPause";
@@ -8,31 +8,27 @@ import PlayPause from "./PlayPause";
 interface SongCardProps {
   song: Song;
   index: number;
-  isPlaying: any;
   activeSong: Song;
   allSongs: Song[];
 }
 
-const activeSong = {
-  title: "govno",
-};
-
 const SongCard: FC<SongCardProps> = ({
   song,
-  isPlaying,
   activeSong,
   index,
   allSongs: data,
 }) => {
   const dispatch = useAppDispatch();
 
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+
   const handlePauseClick = () => {
-    dispatch(playPause(false));
+    setIsPlaying(false);
   };
 
   const handlePlayClick = () => {
     dispatch(setActiveSong({ song, data, index }));
-    dispatch(playPause(true));
+    setIsPlaying(true);
   };
 
   return (

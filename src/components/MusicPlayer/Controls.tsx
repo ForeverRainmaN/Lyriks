@@ -1,30 +1,90 @@
-import React from "react";
+import React, { FC } from "react";
 import {
-  BsArrowRepeat,
   FaPauseCircle,
-  IoShuffleOutline,
+  FaPlayCircle,
+  MdOutlineShuffle,
+  MdRepeat,
+  MdRepeatOne,
   MdSkipNext,
   MdSkipPrevious,
 } from "react-icons/all";
+import { Song } from "../../redux/services/types";
 
 interface ControlsProps {
-  repeat: () => void;
-  play: () => void;
-  pause: () => void;
-  shuffle: () => void;
-  previous: () => void;
-  next: () => void;
+  player: React.ReactNode;
+  activeSong: Song;
+  isPlaying;
+  repeat: boolean;
+  shuffle: boolean;
+  toggleRepeat: () => void;
+  playPause: () => void;
+  toggleShuffle: () => void;
+  goPrevious: () => void;
+  goNext: () => void;
 }
 
-export const Controls = () => {
+export const Controls: FC<ControlsProps> = ({
+  player,
+  isPlaying,
+  toggleRepeat,
+  repeat,
+  shuffle,
+  playPause,
+  toggleShuffle,
+  goPrevious,
+  goNext,
+}) => {
+  const repeatIcon = repeat ? (
+    <MdRepeatOne
+      size={20}
+      onClick={toggleRepeat}
+      className="cursor-pointer fill-white"
+    />
+  ) : (
+    <MdRepeat
+      size={20}
+      onClick={toggleRepeat}
+      className="cursor-pointer hover:fill-white fill-slate-400"
+    />
+  );
+
+  const shuffleClassName = shuffle
+    ? "cursor-pointer fill-white"
+    : "cursor-pointer fill-slate-400 hover:fill-white";
+
   return (
     <div className="flex justify-center">
       <div className="flex w-60 justify-between items-baseline">
-        <BsArrowRepeat size={20} className="text-white" />
-        <MdSkipPrevious size={20} className="text-white" />
-        <FaPauseCircle size={30} className="text-white" />
-        <MdSkipNext size={20} className="text-white" />
-        <IoShuffleOutline size={20} className="text-white" />
+        {repeatIcon}
+        <MdSkipPrevious
+          size={20}
+          className="cursor-pointer fill-slate-400 hover:fill-white"
+          onClick={goPrevious}
+        />
+        {isPlaying ? (
+          <FaPauseCircle
+            size={30}
+            className="cursor-pointer fill-white"
+            onClick={playPause}
+          />
+        ) : (
+          <FaPlayCircle
+            size={30}
+            className="cursor-pointer hover:fill-white"
+            onClick={playPause}
+          />
+        )}
+        <MdSkipNext
+          size={20}
+          className="cursor-pointer fill-slate-400 hover:fill-white"
+          onClick={goNext}
+        />
+        <MdOutlineShuffle
+          size={20}
+          className={shuffleClassName}
+          onClick={toggleShuffle}
+        />
+        {player}
       </div>
     </div>
   );

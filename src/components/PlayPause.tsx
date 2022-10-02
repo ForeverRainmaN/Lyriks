@@ -1,10 +1,11 @@
 import React, { FC } from "react";
 import { FaPauseCircle, FaPlayCircle } from "react-icons/fa";
+import { Song } from "../redux/services/types";
 
 interface PlayPayseProps {
   isPlaying: boolean;
-  activeSong: any;
-  song: any;
+  activeSong: Song;
+  song: Song;
   handlePause: () => void;
   handlePlay: () => void;
 }

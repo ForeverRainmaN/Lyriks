@@ -1,14 +1,12 @@
 import React from "react";
 import { genres } from "../assets/constants";
 import { Error, Loader, SongCard } from "../components";
-import { useAppDispatch, useAppSelector } from "../redux/store";
+import { useAppSelector } from "../redux/store";
 
 import { useGetTopChartsQuery } from "../redux/services/shazamCore";
-import { VolumeBar } from "../components/MusicPlayer/VolumeBar";
 
 const Discover = () => {
-  const dispatch = useAppDispatch();
-  const { activeSong, isPlaying } = useAppSelector((state) => state.player);
+  const { activeSong } = useAppSelector((state) => state.player);
   const { data, isFetching, error } = useGetTopChartsQuery();
 
   if (isFetching) return <Loader title="Loading songs..." />;
@@ -39,8 +37,7 @@ const Discover = () => {
               key={song.key}
               song={song}
               index={i}
-              isPlaying={isPlaying}
-              activeSong={activeSong}
+              activeSong={activeSong!}
               allSongs={data}
             />
           ))}
