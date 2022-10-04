@@ -13,7 +13,7 @@ import { Song } from "../../redux/services/types";
 interface ControlsProps {
   player: React.ReactNode;
   activeSong: Song;
-  isPlaying;
+  isPlaying: boolean;
   repeat: boolean;
   shuffle: boolean;
   toggleRepeat: () => void;
@@ -70,7 +70,7 @@ export const Controls: FC<ControlsProps> = ({
         ) : (
           <FaPlayCircle
             size={30}
-            className="cursor-pointer hover:fill-white"
+            className="cursor-pointer fill-white"
             onClick={playPause}
           />
         )}

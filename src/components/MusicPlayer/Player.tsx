@@ -6,25 +6,33 @@ import { TrackInfo } from "./TrackInfo";
 import { VolumeBar } from "./VolumeBar";
 
 import * as R from "ramda";
-import { useEffect } from "react";
 import { useAudio } from "../../hooks/useAudio";
+import { Seekbar } from "./Seekbar";
 
 const Player = () => {
   const [shuffle, setShuffle] = useState<boolean>(false);
   const [repeat, setRepeat] = useState<boolean>(false);
 
-  const { activeSong, currentSongs, currentIndex, isActive } = useAppSelector(
+  const { activeSong, currentSongs, currentIndex } = useAppSelector(
     (state) => state.player,
   );
 
   const dispatch = useAppDispatch();
   const activeSongUrl = R.pathOr("", ["hub", "actions", 1, "uri"])(activeSong);
   const { player, playerProps } = useAudio(activeSongUrl);
-
-  const [volume, setVolume] = useState<number>(playerProps.volume);
+  const {
+    isPlaying,
+    currentTime,
+    duration,
+    progress,
+    volume,
+    setVolume,
+    setTime,
+    togglePlaybackStatus,
+  } = playerProps;
 
   const handleNextSong = () => {
-    playerProps.togglePlaybackStatus();
+    togglePlaybackStatus();
     if (!shuffle) {
       dispatch(nextSong((currentIndex + 1) % currentSongs.length));
     } else {
@@ -60,25 +68,32 @@ const Player = () => {
   };
 
   return (
-    <div className="flex-col items-center w-full flex justify-between static lg:flex-row">
-      <TrackInfo activeSong={activeSong!} isPlaying={playerProps.isPlaying} />
-      <Controls
-        player={player}
-        activeSong={activeSong!}
-        repeat={repeat}
-        toggleRepeat={handleRepeat}
-        shuffle={shuffle}
-        toggleShuffle={handleShuffle}
-        isPlaying={playerProps.isPlaying}
-        goPrevious={handlePrevSong}
-        goNext={handleNextSong}
-        playPause={playerProps.togglePlaybackStatus}
-      />
+    <div className="items-center w-full flex justify-between static lg:flex-row">
+      <TrackInfo activeSong={activeSong!} isPlaying={isPlaying} />
+      <div className="flex flex-col">
+        <Controls
+          player={player}
+          activeSong={activeSong!}
+          repeat={repeat}
+          toggleRepeat={handleRepeat}
+          shuffle={shuffle}
+          toggleShuffle={handleShuffle}
+          isPlaying={isPlaying}
+          goPrevious={handlePrevSong}
+          goNext={handleNextSong}
+          playPause={togglePlaybackStatus}
+        />
+        <Seekbar
+          currentTime={currentTime}
+          duration={duration}
+          onChange={(e) => setTime(e.target.value)}
+        />
+      </div>
       <VolumeBar
         max={1}
         min={0}
         value={volume}
-        onChange={(e) => playerProps.setVolume(e.target.value)}
+        onChange={(e) => setVolume(e.target.value)}
         setVolume={setVolume}
       />
     </div>
