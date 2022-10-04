@@ -24,7 +24,6 @@ const Player = () => {
     isPlaying,
     currentTime,
     duration,
-    progress,
     volume,
     setVolume,
     setTime,
